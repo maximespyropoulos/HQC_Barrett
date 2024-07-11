@@ -1,4 +1,5 @@
 #include "BIKE.h"
+#include "hash.c"
 
 uint64_t ticks(){
     unsigned int lo,hi;
@@ -1493,6 +1494,7 @@ void decaps_sparse(uint64_t h0[W/2][D+1], uint64_t h1[W/2][D+1], uint64_t c[R_64
 	sec_if_vector(t, t1, val, k, 4);
 }
 
+/*
 int main()
 {
 	if (!seed()) {
@@ -1511,19 +1513,18 @@ int main()
 	encaps(h, c);
 	decaps(h0, h1, h0_dense, h1_dense, c, sigma, k);
 		
-	//SPARSE
+	//SPARSE	
+	//uint64_t h0[W/2][D+1], h1[W/2][D+1];
+	//uint64_t h[R_64_TAB][D+1];
+	//uint64_t c[R_64_TAB+4][D+1];
+	//uint64_t sigma[4][D+1];
+	//uint64_t k[4][D+1];
 	
-	/*
-	uint64_t h0[W/2][D+1], h1[W/2][D+1];
-	uint64_t h[R_64_TAB][D+1];
-	uint64_t c[R_64_TAB+4][D+1];
-	uint64_t sigma[4][D+1];
-	uint64_t k[4][D+1];
+	//generate_keys(h0, h1, h, sigma);
+	//encaps(h, c);
+	//decaps_sparse(h0, h1, c, sigma, k);
 	
-	generate_keys(h0, h1, h, sigma);
-	encaps(h, c);
-	decaps_sparse(h0, h1, c, sigma, k);
-	*/
 
 	return 0;
 }
+*/

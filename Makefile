@@ -7,12 +7,12 @@ CC = gcc
 CFLAGS  = -O3
 
 # the build target executable:
-TARGET = BIKE
+TARGET = barrett
 
 all: $(TARGET)
 
-$(TARGET): $(TARGET).c
-	$(CC) $(CFLAGS) xoshiro256starstar.c -o $(TARGET) $(TARGET).c
+barrett: barrett.c
+	$(CC) $(CFLAGS) xoshiro256starstar.c -o $(TARGET) BIKE.c $(TARGET).c
 
 clean:
 	$(RM) $(TARGET)

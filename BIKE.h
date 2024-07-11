@@ -6,7 +6,6 @@
 
 #define LEVEL 1
 #define D 1
-#include "hash.c"
 
 #if LEVEL == 1
 	#define R 12323
@@ -71,13 +70,4 @@ uint64_t r_mod[BITS] = {2, 2, 2, 2, 7777, 7777, 14906, 14906, 14906, 14906, 1490
 uint64_t permut_2[BITS] = {2,4,16,256,24563,13544,3815,8810,13238,3123,1555,618,13167,13126,411}; 
 uint64_t r_mod[BITS] = {2, 8, 8, 2048, 2048, 2048, 2048, 2048, 2048, 2048, 2048, 2048, 2048, 3760, 3760};
 #endif
-
-
-void boolean_refresh(uint64_t *x);
-void fisher_yates(uint64_t x[][D+1], uint16_t s, uint64_t n, uint16_t bits);
-void boolean_demi_mult(uint64_t x[D+1], uint64_t y, uint64_t z[D+1], uint8_t bits);
-void sec_equality(uint64_t x[D+1], uint64_t y[D+1], uint64_t z[D+1]);
-void boolean_demi_sec_plus(uint64_t x[D+1], uint64_t y, uint64_t z[D+1]);
-void sec_if(uint64_t a[D+1], uint64_t b[D+1], uint64_t c[D+1], uint64_t res[D+1]);
-void boolean_sec_plus(uint64_t *x, uint64_t *y, uint64_t *z);
 
