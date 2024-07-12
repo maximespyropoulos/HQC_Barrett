@@ -190,7 +190,6 @@ void barrett(uint64_t a[D+1], uint8_t i, uint32_t r[D+1]){
   boolean_demi_sec_plus_32(a_qn32, minus_n, A);
 
 
-
   for(int j=0; j<=D;j++){
     z[j] = A[j]>> 31;
   }
@@ -204,7 +203,7 @@ void barrett(uint64_t a[D+1], uint8_t i, uint32_t r[D+1]){
 
 
 // Fisher-Yates adapted to HQC
-void fy_hqc(uint64_t x[][D+1], uint16_t s, uint64_t n, uint16_t bits){
+void fy_hqc(uint64_t x[][D+1], uint16_t s, uint64_t n){
   for(int i = s - 1; i >= 0; --i)
     {
       uint64_t val_i[D+1]={0};
@@ -228,14 +227,35 @@ void fy_hqc(uint64_t x[][D+1], uint16_t s, uint64_t n, uint16_t bits){
 }
 
 int main(){
-  uint64_t x[1][D+1];
-  x[0][0] = 17672^88;
-  x[0][1] = 88;
+  if (!seed()) {
+    return 1;
+  }
+  // Toy example
+  /*
+  uint64_t x[1][D+1]={0};
+  x[0][0] = 17711;
+  boolean_refresh(x[0]); // boolean sharing
+  uint64_t n = 17669;
+  uint64_t r = 0;
 
-  fy_hqc(x,1,17669,66);
+  fy_hqc(x,1,n);
+  
+  for(int d = 0; d<=D; d++){
+    r^=x[0][d];
+  }
 
-  printf("%lu\n", x[0][0] ^ x[0][1]);
+  printf("r = %lu\n", r); // should be: 17711 mod n = 42
+  */
 
+  // Sampling of a random vector for HQC
+  uint64_t x[75][D+1];
+  uint64_t n = 17669;
+  for(int i=0; i<75; i++){
+    x[i][0] = next(); // init with random values
+    boolean_refresh(x[i]); //boolean sharing
+  }
+  fy_hqc(x,75,n);
+  
   
   return 0;
 }
