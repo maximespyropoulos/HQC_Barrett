@@ -177,13 +177,13 @@ void barrett(uint64_t a[D+1], uint8_t i, uint32_t r[D+1]){
   boolean_sec_minus(a, qn, a_qn);
 
 
-  uint32_t moins1 =((1<<32)-1);
+  uint32_t moins1 = UINT32_MAX; //((1<<32)-1);
   for(int j=0; j<=D;j++){
     a_qn[j] &= moins1;
   }
 
   // Conditional subtraction
-  uint32_t minus_n = (1<<32) - n;
+  uint32_t minus_n = -n; //(1<<32) - n;
   convert_64to32(a_qn, a_qn32);
 
 
@@ -231,7 +231,7 @@ int main(){
     return 1;
   }
   // Toy example
-  /*
+  
   uint64_t x[1][D+1]={0};
   x[0][0] = 17711;
   boolean_refresh(x[0]); // boolean sharing
@@ -245,9 +245,10 @@ int main(){
   }
 
   printf("r = %lu\n", r); // should be: 17711 mod n = 42
-  */
+  
 
   // Sampling of a random vector for HQC
+  /*
   uint64_t x[75][D+1];
   uint64_t n = 17669;
   for(int i=0; i<75; i++){
@@ -255,6 +256,7 @@ int main(){
     boolean_refresh(x[i]); //boolean sharing
   }
   fy_hqc(x,75,n);
+  */
   
   
   return 0;
