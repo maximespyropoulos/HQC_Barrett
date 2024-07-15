@@ -231,7 +231,7 @@ int main(){
     return 1;
   }
   // Toy example
-  
+  /*
   uint64_t x[1][D+1]={0};
   x[0][0] = 17711;
   boolean_refresh(x[0]); // boolean sharing
@@ -245,10 +245,10 @@ int main(){
   }
 
   printf("r = %lu\n", r); // should be: 17711 mod n = 42
-  
+  */
 
   // Sampling of a random vector for HQC
-  /*
+ 
   uint64_t x[75][D+1];
   uint64_t n = 17669;
   for(int i=0; i<75; i++){
@@ -256,7 +256,7 @@ int main(){
     boolean_refresh(x[i]); //boolean sharing
   }
   fy_hqc(x,75,n);
-  */
+  
   
   
   return 0;
